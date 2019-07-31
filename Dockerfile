@@ -33,8 +33,6 @@ ENV PATH=/opt/ants/bin:$PATH
 RUN yum install -y python36 python36-pip python36-devel libstdc++-static pigz python36-virtualenv
 RUN pip3.6 install numpy==1.16.3 scipy==1.2.1 bids-validator==1.2.4 pybids==0.9.2 heudiconv==0.5.4 nibabel==2.4.0 nipype==1.2.0 duecredit==0.7.0 heudiconv==0.5.4 netCDF4==1.5.1.2
 
-COPY pndniworkflows /root/pndniworkflows
-
 RUN pip3.6 install git+https://github.com/pndni/pndniworkflows.git@5a2b1e3
 
 RUN mkdir /opt/bin/
