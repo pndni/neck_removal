@@ -21,7 +21,7 @@ if __name__ == '__main__':
     wf.base_dir = wd
     neck_rm.inputs.inputspec.T1 = str(Path(infile).resolve())
     neck_rm.inputs.inputspec.model = str(Path(model).resolve())
-    neck_rm.inputs.inputspec.limits = [90.0, 110.0, -85.0]
+    neck_rm.inputs.inputspec.limits = [90.0, 110.0, -105.0]
     write = pe.Node(Function(input_names=['infile', 'outfile'], output_names=['outfile'], function=copy), 'write')
     write.inputs.outfile = str(Path(outfile).resolve())
     wf.connect(neck_rm, 'outputspec.noneck', write, 'infile')
