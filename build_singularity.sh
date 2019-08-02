@@ -23,6 +23,12 @@ SINGULARITY_TMPDIR=$(mktemp -d -p /tmp_disk)
 export SINGULARITY_TMPDIR
 
 export SINGULARITY_NOHTTPS=1
-/opt/singularity/2.5.2/bin/singularity build neck_removal-image-$ver.simg docker://$dockerimg
+outimg=neck_removal-image-$ver.simg
+if [ -e "$outimg" ]
+then
+	echo "$outimg already exists. exiting" >&2
+	exit 1
+fi
+/opt/singularity/2.5.2/bin/singularity build "$outimg" docker://$dockerimg
 rm -rf $TMPDIR
 rm -rf $SINGULARITY_TMPDIR
