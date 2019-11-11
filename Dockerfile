@@ -31,9 +31,8 @@ ENV PATH=/opt/ants/bin:$PATH
 
 # python and dcm2niix stuff
 RUN yum install -y python36 python36-pip python36-devel libstdc++-static pigz python36-virtualenv
-RUN pip3.6 install numpy==1.16.3 scipy==1.2.1 bids-validator==1.2.4 pybids==0.9.2 heudiconv==0.5.4 nibabel==2.4.0 nipype==1.2.0 duecredit==0.7.0 heudiconv==0.5.4 netCDF4==1.5.1.2
 
-RUN pip3.6 install git+https://github.com/pndni/pndniworkflows.git@5a2b1e3
+RUN pip3.6 install git+https://github.com/pndni/pndniworkflows.git@aca229e180f4952596939ac0cccc51177bdcfed3
 
 RUN mkdir /opt/bin/
 COPY remove_neck.py /opt/bin/
@@ -41,5 +40,19 @@ ENV PATH=/opt/bin:$PATH
 
 ENTRYPOINT ["python3.6", "/opt/bin/remove_neck.py"]
 
-LABEL Maintainer="Steven Tilley"
+ARG ver=dev
+ARG builddate=""
+ARG revision=""
+
+LABEL org.opencontainers.image.title=neck_removal \
+      org.opencontainers.image.source=https://github.com/pndni/neck_removal \
+      org.opencontainers.image.url=https://github.com/pndni/neck_removal \
+      org.opencontainers.image.revision=$ver \
+      org.opencontainers.image.created=$builddate \
+      org.opencontainers.image.version=$revision \
+      org.label-schema.build-date="" \
+      org.label-schema.license="" \
+      org.label-schema.name="" \
+      org.label-schema.schema-version="" \
+      org.label-schema.vendor=""
 
