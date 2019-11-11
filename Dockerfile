@@ -32,7 +32,7 @@ ENV PATH=/opt/ants/bin:$PATH
 # python and dcm2niix stuff
 RUN yum install -y python36 python36-pip python36-devel libstdc++-static pigz python36-virtualenv
 
-RUN pip3.6 install git+https://github.com/pndni/pndniworkflows.git@aca229e180f4952596939ac0cccc51177bdcfed3
+RUN pip3.6 install git+https://github.com/pndni/pndniworkflows.git@df530084b8df1a2e9c6d80adb071cf8af988ac9d
 
 RUN mkdir /opt/bin/
 COPY remove_neck.py /opt/bin/
